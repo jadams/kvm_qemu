@@ -38,5 +38,4 @@ public_ip=$(ifconfig $public_nic|grep inet|awk '{print $2}')
 
 echo "Started VM:"
 echo "Public: ${public_ip}:${port}"
-#echo "QEMU/Monitor: screen -r qemu-${VNC}"
 echo "QEMU/Monitor: 127.0.0.1:${TNET}"

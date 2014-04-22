@@ -13,7 +13,7 @@ mac=`dladm show-vnic -po macaddress $VNIC`
 /usr/bin/qemu-system-x86_64 \
 -name "$(basename $CD)" \
 -monitor telnet:127.0.0.1:$TNET,server,nowait \
--boot cd \
+-boot dc \
 -enable-kvm \
 -vnc 0.0.0.0:$VNC \
 -smp 2 \
