@@ -2,8 +2,8 @@
 
 # configuration
 VNIC=vnic2
-HDD=/dev/zvol/rdsk/rpool/KVM/debian/disk0
-CD=/data/media/Downloads/debian-7.4.0-amd64-netinst.iso
+HDD=/dev/zvol/rdsk/rpool/KVM/ubuntu/disk0
+CD=/data/backups/iso/ubuntu-14.04-server-amd64.iso
 VNC=7
 TNET=$VNC$VNC$VNC$VNC
 MEM=1024
@@ -26,8 +26,6 @@ mac=`dladm show-vnic -po macaddress $VNIC`
 -vga std \
 -daemonize
 
-#/usr/bin/screen -S qemu-$VNC -d -m telnet 127.0.0.1 $TNET
-
 if [ $? -gt 0 ]; then
     echo "Failed to start VM"
 fi
@@ -38,5 +36,4 @@ public_ip=$(ifconfig $public_nic|grep inet|awk '{print $2}')
 
 echo "Started VM:"
 echo "Public: ${public_ip}:${port}"
-#echo "QEMU/Monitor: screen -r qemu-${VNC}"
 echo "QEMU/Monitor: 127.0.0.1:${TNET}"
